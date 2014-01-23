@@ -12,27 +12,33 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.*;
 
 @Service
 public class RepositoryXnabVrstaPotupkaService implements
 		XnabVrstaPostupkaService {
 	
 	 private static final Logger LOGGER = LoggerFactory.getLogger(RepositoryXnabVrstaPotupkaService.class);
-	 @Resourse
+	 
+	 @Resource
 	 private XnabVrstaPostupkaRepository xnabVrstaPostupkaRepository;
 	 
 	 
-
-	public List<XnabVrstaPostupka> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	 @Transactional(readOnly = true)
+	    public List<XnabVrstaPostupka> findAll() {
+		  LOGGER.debug("Finding all persons");
+		return   xnabVrstaPostupkaRepository.findAll();
+		  
+		
 	}
 
 
 
 	public void setXnabVrstaPostupkaRepository(
 			XnabVrstaPostupkaRepository xnabVrstaPostupkaRepository) {
-		
+		this.xnabVrstaPostupkaRepository = xnabVrstaPostupkaRepository;
 		
 	}
 
