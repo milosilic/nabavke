@@ -29,7 +29,7 @@ public class RepositoryXnabVrstaPotupkaService implements
 	 @Transactional(readOnly = true)
 	    public List<XnabVrstaPostupka> findAll() {
 		  LOGGER.debug("Finding all persons");
-		return   xnabVrstaPostupkaRepository.findAll();
+		return   (List<XnabVrstaPostupka>) xnabVrstaPostupkaRepository.findAll();
 		  
 		
 	}

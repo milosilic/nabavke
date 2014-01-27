@@ -12,6 +12,15 @@
 	<mvc:view-controller path="/embeddedFlowContainer" />
 	<mvc:view-controller path="/embeddedFlowInModalDialogContainer" />
 	
-	<context:component-scan base-package="org.springframework.samples.webflow" />
+	<context:component-scan base-package="master.controller" />
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
 	 
 </beans>

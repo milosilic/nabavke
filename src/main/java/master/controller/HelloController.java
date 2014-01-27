@@ -1,6 +1,7 @@
 package master.controller;
 
 import master.config.Application;
+import master.entity.XnabVrstaPostupka;
 import master.repository.XnabVrstaPostupkaRepository;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -20,7 +21,14 @@ public class HelloController {
 	public String printWelcome(ModelMap model) {
 		
 		XnabVrstaPostupkaRepository xnabVrstaPostupkaRepository = context.getBean(XnabVrstaPostupkaRepository.class);
-
+		 // fetch all customers
+        Iterable<XnabVrstaPostupka> customers = xnabVrstaPostupkaRepository.findAll();
+        System.out.println("Customers found with findAll():");
+        System.out.println("-------------------------------");
+        for (XnabVrstaPostupka customer : customers) {
+            System.out.println(customer);
+        }
+        System.out.println();
 		model.addAttribute("message", "Spring 3 MVC Hello World");
 		return "hello";
 
